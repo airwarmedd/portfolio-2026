@@ -266,6 +266,9 @@
     background: var(--bg);
     padding: 16px 18px;
   }
+  .mg-cell-wide {
+    grid-column: span 2;
+  }
   .mg-label {
     color: var(--dim-bright);
     font-size: 11px;
@@ -496,6 +499,7 @@
     .metric-table td:first-child { color: var(--dim-bright); padding-top: 12px; }
     .shot-grid, .shot-grid-3 { grid-template-columns: 1fr; }
     .metric-grid { grid-template-columns: 1fr; }
+    .mg-cell-wide { grid-column: span 1; }
     .hook-parts { grid-template-columns: 1fr; }
   }
 
