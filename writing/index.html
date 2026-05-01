@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditi Sharma · Writing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
+<style>
+  /* WRITING-PAGE SPECIFIC */
+  .writing-hero {
+    margin: 24px 0 48px;
+  }
+  .writing-hero h1 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: clamp(40px, 7vw, 78px);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+  .writing-hero h1 .blink {
+    display: inline-block;
+    width: 0.5em;
+    height: 0.85em;
+    background: var(--accent);
+    vertical-align: -0.05em;
+    margin-left: 4px;
+    animation: blink 1.1s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .writing-hero p {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 65ch;
+  }
+
+  /* SECTION HEADERS */
+  .section-h {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--dim-bright);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 56px 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* THREAD CARDS */
+  .threads {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .thread {
+    border: 1px solid var(--line);
+    background: var(--bg);
+    padding: 22px 24px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: all 0.15s ease;
+  }
+  .thread:hover {
+    border-color: var(--accent);
+    background: var(--panel);
+  }
+  .thread .meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--dim-bright);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .thread .pill {
+    display: inline-block;
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+    color: var(--accent);
+    font-size: 10px;
+  }
+  .thread .pill.travel { color: var(--warm); border-color: var(--warm); }
+  .thread .pill.marketing { color: var(--accent); border-color: var(--accent); }
+  .thread .platform {
+    color: var(--dim-bright);
+  }
+  .thread h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.4;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .thread .desc {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--dim-bright);
+    max-width: 70ch;
+  }
+  .thread .read {
+    margin-top: 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+  }
+  .thread:hover .read {
+    text-decoration: underline;
+  }
+
+  /* SUBSTACK CALLOUT */
+  .substack-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: 32px;
+    margin: 32px 0;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+  }
+  .substack-card .info h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .substack-card .info p {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--text);
+    max-width: 60ch;
+  }
+  .substack-card .info .url {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--dim-bright);
+    margin-top: 12px;
+  }
+  .substack-card a.btn {
+    color: var(--bg);
+    background: var(--accent);
+    text-decoration: none;
+    padding: 12px 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    border: 1px solid var(--accent);
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .substack-card a.btn:hover {
+    background: transparent;
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .substack-card { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  /* COMMUNITY CARD */
+  .community-card {
+    border: 1px solid var(--line);
+    background: var(--bg);
+    padding: 32px;
+    margin: 24px 0 40px;
+  }
+  .community-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .community-pill {
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 10px;
+  }
+  .community-stat {
+    color: var(--warm);
+    font-weight: 600;
+  }
+  .community-card h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    max-width: 60ch;
+  }
+  .community-card p {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 65ch;
+    margin-bottom: 14px;
+  }
+  .community-card .community-join {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--bg);
+    background: var(--accent);
+    text-decoration: none;
+    padding: 12px 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    border: 1px solid var(--accent);
+    transition: all 0.15s;
+  }
+  .community-card .community-join:hover {
+    background: transparent;
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../" class="brand">Aditi Sharma<span class="dot">.</span></a>
+  <div class="links">
+    <a href="../">Home</a>
+    <a href="../projects/">Projects</a>
+    <a href="./" class="active">Writing</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="term-header">
+    <div class="dots"><span></span><span></span><span></span></div>
+    <div class="path">~/<span class="accent">writing</span></div>
+  </div>
+
+  <div class="term-body">
+
+    <div class="prompt"><span class="green">$</span> ls writing/</div>
+
+    <div class="writing-hero">
+      <h1>Writing<span class="blink"></span></h1>
+      <p>
+        Long-form on Twitter, occasional newsletter on Substack. Mix of marketing notes and travel essays. Threads sit somewhere between a guide and a journal entry.
+      </p>
+    </div>
+
+    <div class="section-h">Twitter threads</div>
+
+    <div class="threads">
+
+      <a href="https://x.com/airwarmedd/status/2043373653707145679" class="thread" target="_blank" rel="noopener">
+        <div class="meta">
+          <span class="pill marketing">Marketing</span>
+          <span class="platform">Twitter / X</span>
+        </div>
+        <h3>Notes on organic growth, observed across 5 years and 4 startups.</h3>
+        <div class="desc">Patterns I keep seeing in what works for content-led acquisition. Written for marketers who don't have ad budgets to lean on.</div>
+        <div class="read">Read on X →</div>
+      </a>
+
+      <a href="https://x.com/airwarmedd/status/2038617814068584939" class="thread" target="_blank" rel="noopener">
+        <div class="meta">
+          <span class="pill marketing">Marketing</span>
+          <span class="platform">Twitter / X</span>
+        </div>
+        <h3>SEO is changing. Here's what I'm doing about it.</h3>
+        <div class="desc">On the shift from traditional SEO to GEO/AEO and what it means for content strategy in the LLM era.</div>
+        <div class="read">Read on X →</div>
+      </a>
+
+      <a href="https://x.com/airwarmedd/status/1967845556400861400" class="thread" target="_blank" rel="noopener">
+        <div class="meta">
+          <span class="pill travel">Travel</span>
+          <span class="platform">Twitter / X</span>
+        </div>
+        <h3>Travel thread, recent.</h3>
+        <div class="desc">A trip and what stuck. The kind of thread that's part itinerary, part field notes.</div>
+        <div class="read">Read on X →</div>
+      </a>
+
+      <a href="https://x.com/airwarmedd/status/1763266210878124296" class="thread" target="_blank" rel="noopener">
+        <div class="meta">
+          <span class="pill travel">Travel</span>
+          <span class="platform">Twitter / X</span>
+        </div>
+        <h3>Travel notes from the road.</h3>
+        <div class="desc">Practical observations from somewhere in transit. The kind of post that's more useful than it looks.</div>
+        <div class="read">Read on X →</div>
+      </a>
+
+      <a href="https://x.com/airwarmedd/status/1726224067215438179" class="thread" target="_blank" rel="noopener">
+        <div class="meta">
+          <span class="pill travel">Travel</span>
+          <span class="platform">Twitter / X</span>
+        </div>
+        <h3>A trip thread.</h3>
+        <div class="desc">Part journal, part guide. Photos, lessons, mistakes worth not repeating.</div>
+        <div class="read">Read on X →</div>
+      </a>
+
+      <a href="https://x.com/airwarmedd/status/1636239619120578560" class="thread" target="_blank" rel="noopener">
+        <div class="meta">
+          <span class="pill travel">Travel</span>
+          <span class="platform">Twitter / X</span>
+        </div>
+        <h3>Older travel thread, still holds up.</h3>
+        <div class="desc">One of the earlier threads I wrote that found its audience. Travel as a thinking exercise.</div>
+        <div class="read">Read on X →</div>
+      </a>
+
+    </div>
+
+    <div class="section-h">Newsletter</div>
+
+    <div class="substack-card">
+      <div class="info">
+        <h3>Personal Newsletter: Anecdotes from my life</h3>
+        <p>I started this newsletter in 2021. I didn't really know what I was doing. I just wanted a space that wasn't about productivity or "value." Just a place to put thoughts. Over the years it's quietly received a lot of love, mostly from people who know me well, which is probably why it's so personal to me. It's not about trends or lessons or hot takes. It's about what I see in my everyday life. What I feel. How I'm moving through my 20s, and now my late 20s.</p>
+        <div class="url">airwarmedd.substack.com · since 2021</div>
+      </div>
+      <a href="https://airwarmedd.substack.com/" class="btn" target="_blank" rel="noopener">Subscribe ↗</a>
+    </div>
+
+    <div class="section-h">Marketing community</div>
+
+    <div class="community-card">
+      <div class="community-meta">
+        <span class="community-pill">Since 2023</span>
+        <span class="community-stat">1,000+ marketers</span>
+      </div>
+      <h3>Marketing Community: where the silly questions are welcome.</h3>
+      <p>
+        I started this in 2023 because I had a few marketing questions and couldn't find a place to ask them without judgement. So I built one. It's grown into a community of 1,000+ marketers who learn from each other, share what's working, and ask the questions you can't ask in a Slack channel where your boss is watching.
+      </p>
+      <a href="https://docs.google.com/forms/d/1rcfiouK67580xrALq3rX0lYbBsNWn6p9i0icfXVnc_4/edit" class="community-join" target="_blank" rel="noopener">Join the community ↗</a>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
